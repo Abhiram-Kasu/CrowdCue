@@ -4,7 +4,8 @@ import 'dart:ui';
 import 'package:crowdcue_frontend_flutter/components/code_copy_button.dart';
 import 'package:crowdcue_frontend_flutter/services/spotify_service.dart';
 import 'package:flutter/material.dart';
-import 'package:crowdcue_frontend_flutter/remote/remote.dart'; // Adjust import path
+import 'package:crowdcue_frontend_flutter/remote/remote.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Adjust import path
 
 class PartyPage extends StatefulWidget {
   static const String routeName = '/party'; // Example route name
@@ -131,180 +132,185 @@ class _PartyPageState extends State<PartyPage> {
 
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                // Party information at the top
-                Column(
-                  children: [
-                    Text(
-                      widget.httpClient.partyName ?? "Unknown",
-                      style: Theme.of(context).textTheme.headlineLarge
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              // Party information at the top
+              Column(
+                children: [
+                  Text(
+                    widget.httpClient.partyName ?? "Unknown",
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 8),
-                    CodeCopyButton(
-                      code: widget.httpClient.currentPartyCode ?? "",
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-
-                // Horizontal Music Player (iOS Control Center style)
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                      image:
-                          spotifyServiceInstance.coverImage?.image ??
-                          Image.network(
-                            "https://w0.peakpx.com/wallpaper/757/661/HD-wallpaper-black-screen-plain-noir-dark.jpg",
-                          ).image,
-                      fit: BoxFit.cover,
-                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: isDarkMode
-                              ? Colors.black.withOpacity(0.6)
-                              : Colors.white.withOpacity(0.6),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Column(
-                          children: [
-                            // Horizontal layout: Album cover + Song info + Controls
-                            Row(
-                              children: [
-                                // Album cover (small, unblurred)
-                                Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    image: DecorationImage(
-                                      image:
-                                          spotifyServiceInstance
-                                              .coverImage
-                                              ?.image ??
-                                          Image.network(
-                                            "https://w0.peakpx.com/wallpaper/757/661/HD-wallpaper-black-screen-plain-noir-dark.jpg",
-                                          ).image,
-                                      fit: BoxFit.cover,
-                                    ),
+                  const SizedBox(height: 8),
+                  CodeCopyButton(
+                    code: widget.httpClient.currentPartyCode ?? "",
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+
+              // Horizontal Music Player (iOS Control Center style)
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image:
+                        spotifyServiceInstance.coverImage?.image ??
+                        Image.network(
+                          "https://w0.peakpx.com/wallpaper/757/661/HD-wallpaper-black-screen-plain-noir-dark.jpg",
+                        ).image,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: isDarkMode
+                            ? Colors.black.withOpacity(0.6)
+                            : Colors.white.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        children: [
+                          // Horizontal layout: Album cover + Song info + Controls
+                          Row(
+                            children: [
+                              // Album cover (small, unblurred)
+                              Container(
+                                width: 60,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  image: DecorationImage(
+                                    image:
+                                        spotifyServiceInstance
+                                            .coverImage
+                                            ?.image ??
+                                        Image.network(
+                                          "https://w0.peakpx.com/wallpaper/757/661/HD-wallpaper-black-screen-plain-noir-dark.jpg",
+                                        ).image,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                                const SizedBox(width: 12),
+                              ),
+                              const SizedBox(width: 12),
 
-                                // Song info (title and artist)
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        spotifyServiceInstance
-                                                .currentTrack
-                                                ?.name ??
-                                            'No Track Playing',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      const SizedBox(height: 2),
-                                      Text(
-                                        spotifyServiceInstance
-                                                .currentTrack
-                                                ?.artist ??
-                                            'Unknown Artist',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium
-                                            ?.copyWith(
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                // Music controls
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
+                              // Song info (title and artist)
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    // Previous button
-                                    IconButton(
-                                      onPressed: () => _skipPrevious(),
-                                      icon: const Icon(
-                                        Icons.skip_previous,
-                                        size: 28,
-                                      ),
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      padding: const EdgeInsets.all(8),
+                                    Text(
+                                      spotifyServiceInstance
+                                              .currentTrack
+                                              ?.name ??
+                                          'No Track Playing',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
-
-                                    // Play/Pause button
-                                    IconButton(
-                                      onPressed: () => _togglePlayPause(),
-                                      icon: Icon(
-                                        !spotifyServiceInstance.isPaused
-                                            ? Icons.pause
-                                            : Icons.play_arrow,
-                                        size: 24,
-                                      ),
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      padding: const EdgeInsets.all(8),
-                                    ),
-
-                                    // Next button
-                                    IconButton(
-                                      onPressed: () => _skipNext(),
-                                      icon: const Icon(
-                                        Icons.skip_next,
-                                        size: 28,
-                                      ),
-                                      color: isDarkMode
-                                          ? Colors.white
-                                          : Colors.black,
-                                      padding: const EdgeInsets.all(8),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      spotifyServiceInstance
+                                              .currentTrack
+                                              ?.artist ??
+                                          'Unknown Artist',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                            color: !isDarkMode
+                                                ? Colors.grey[850]
+                                                : const Color.fromARGB(
+                                                    255,
+                                                    226,
+                                                    226,
+                                                    226,
+                                                  ),
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                            const SizedBox(height: 12),
+                              ),
 
-                            // Progress bar with time labels
-                            _buildProgressBar(),
-                          ],
-                        ),
+                              // Music controls
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  // Previous button
+                                  IconButton(
+                                    onPressed: () => _skipPrevious(),
+                                    icon: const Icon(
+                                      Icons.skip_previous,
+                                      size: 28,
+                                    ),
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                    padding: const EdgeInsets.all(8),
+                                  ),
+
+                                  // Play/Pause button
+                                  IconButton(
+                                    onPressed: () => _togglePlayPause(),
+                                    icon: Icon(
+                                      !spotifyServiceInstance.isPaused
+                                          ? Icons.pause
+                                          : Icons.play_arrow,
+                                      size: 24,
+                                    ),
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                    padding: const EdgeInsets.all(8),
+                                  ),
+
+                                  // Next button
+                                  IconButton(
+                                    onPressed: () => _skipNext(),
+                                    icon: const Icon(Icons.skip_next, size: 28),
+                                    color: isDarkMode
+                                        ? Colors.white
+                                        : Colors.black,
+                                    padding: const EdgeInsets.all(8),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+
+                          // Progress bar with time labels
+                          _buildProgressBar(),
+                        ],
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+              ),
+              const SizedBox(height: 20),
 
-                // Song Queue Section
-                Container(
+              // Song Queue Section - Now takes remaining space and scrolls internally
+              Expanded(
+                child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: isDarkMode
@@ -317,6 +323,7 @@ class _PartyPageState extends State<PartyPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Fixed header
                         Text(
                           'Queue',
                           style: Theme.of(context).textTheme.headlineSmall
@@ -324,98 +331,114 @@ class _PartyPageState extends State<PartyPage> {
                         ),
                         const SizedBox(height: 16),
 
-                        // Queue items
-                        if (_currentPartyState.songQueue.isEmpty)
-                          Container(
-                            height: 100,
-                            child: const Center(
-                              child: Text(
-                                'No songs in queue',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          )
-                        else
-                          ...List.generate(
-                            _currentPartyState.songQueue.length,
-                            (index) {
-                              final song = _currentPartyState.songQueue[index];
-                              return Container(
-                                margin: const EdgeInsets.only(bottom: 8),
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: isDarkMode
-                                      ? Colors.grey[800]
-                                      : Colors.white,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      '${index + 1}',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey[600],
-                                      ),
+                        // Scrollable queue items
+                        Expanded(
+                          child: _currentPartyState.songQueue.isEmpty
+                              ? const Center(
+                                  child: Text(
+                                    'No songs in queue',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
                                     ),
-                                    const SizedBox(width: 12),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                  ),
+                                )
+                              : ListView.builder(
+                                  itemCount:
+                                      _currentPartyState.songQueue.length,
+                                  itemBuilder: (context, index) {
+                                    final song =
+                                        _currentPartyState.songQueue[index];
+                                    return Container(
+                                      margin: const EdgeInsets.only(bottom: 8),
+                                      padding: const EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: isDarkMode
+                                            ? Colors.grey[800]
+                                            : Colors.white,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
                                         children: [
                                           Text(
-                                            song.title,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Text(
-                                            song.artist,
+                                            '${index + 1}',
                                             style: TextStyle(
+                                              fontWeight: FontWeight.bold,
                                               color: Colors.grey[600],
-                                              fontSize: 14,
                                             ),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  song.title,
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  song.artist,
+                                                  style: TextStyle(
+                                                    color: Colors.grey[600],
+                                                    fontSize: 14,
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 4,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                            ),
+                                            child: Text(
+                                              '${song.votes}',
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 4,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Colors.blue,
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Text(
-                                        '${song.votes}',
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                    );
+                                  },
                                 ),
-                              );
-                            },
-                          ),
+                        ),
+
+                        // Fixed buttons at bottom
+                        const SizedBox(height: 16),
+                        Row(
+                          children: [
+                            Spacer(),
+                            OutlinedButton.icon(
+                              onPressed: () {},
+                              label: const Text("Add Song"),
+                              icon: Icon(FontAwesomeIcons.plus),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
