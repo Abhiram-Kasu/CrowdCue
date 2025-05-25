@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C2495968-9538-446D-B09B-7BEC5EC5EDFA"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E5FB5A0-031B-4433-88A8-E659743CCC2F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CrowdCue_Frontend_Ios/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABF12ABC-E9D1-4B7C-A545-C87FD1093467"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CrowdCue_Frontend_Ios/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D18AB879-6FC0-4A26-A335-02A2BF0FEE91"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CrowdCue_Frontend_Ios/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDAA3ED0-DF5D-47FA-9BE2-3657E0DA189A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CrowdCue_Frontend_Ios/Models/Song.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9AF5385C-C657-4747-9D1F-0087FA510FE8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CrowdCue_Frontend_Ios/PartyView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "createParty(username:partyName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F48A4A55-216F-4415-B79A-6795B99004E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "CrowdCueHttpClient"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - f0e67a1d346b5f2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of CrowdCue_Frontend_Ios.CrowdCueHttpClient.currentPartyCode : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - cb067b5b470a941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CrowdCue_Frontend_Ios.CrowdCueHttpClient.currentPartyCode.getter : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - f5c5459487ea195d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CrowdCue_Frontend_Ios.CrowdCueHttpClient.currentPartyCode.setter : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - 280479601e090d4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CrowdCue_Frontend_Ios.CrowdCueHttpClient.currentPartyCode.modify : Swift.Optional&lt;Swift.String&gt;"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - 6d0032838be00672"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CrowdCue_Frontend_Ios.CrowdCueHttpClient.$currentPartyCode.getter : Combine.Published&lt;Swift.Optional&lt;Swift.String&gt;&gt;.Publisher"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - 27ad392bf176ae0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CrowdCue_Frontend_Ios.CrowdCueHttpClient.$currentPartyCode.setter : Combine.Published&lt;Swift.Optional&lt;Swift.String&gt;&gt;.Publisher"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "F48A4A55-216F-4415-B79A-6795B99004E5 - 7cc91983bd978c7f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CrowdCue_Frontend_Ios.CrowdCueHttpClient.$currentPartyCode.modify : Combine.Published&lt;Swift.Optional&lt;Swift.String&gt;&gt;.Publisher"
+                  moduleName = "CrowdCue_Frontend_Ios.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhiramkasu/Projects/CrowdCue_Docker/CrowdCue_Frontend_Ios/CrowdCue_Frontend_Ios/Models/CrowdCueHttpClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
