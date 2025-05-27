@@ -20,6 +20,8 @@ class PartyPage extends StatefulWidget {
 class _PartyPageState extends State<PartyPage> {
   StreamSubscription<SSEEvent>? _sseSubscription;
 
+  late final _httpClient = widget.httpClient;
+
   @override
   void initState() {
     super.initState();
@@ -511,15 +513,27 @@ class _PartyPageState extends State<PartyPage> {
     return '${minutes.toString().padLeft(1, '0')}:${seconds.toString().padLeft(2, '0')}';
   }
 
-  void _togglePlayPause() {
-    spotifyServiceInstance.togglePlayPause();
+  void _togglePlayPause() async {
+    await spotifyServiceInstance.togglePlayPause();
+
+    // publish event
+
+    await _httpClient.updatePlaybackStatus(
+      partyCode: _httpClient.currentPartyCode!,
+      isPlaying: spotifyServiceInstance.isPaused,
+    );
+    print(
+      "Playback status updated: ${spotifyServiceInstance.isPaused ? 'Paused' : 'Playing'}",
+    );
   }
 
   void _skipPrevious() {
     spotifyServiceInstance.skipPrevious();
+    // publish event
   }
 
-  void _skipNext() {
-    spotifyServiceInstance.skipNext();
+  void _skipNext() async {
+    await spotifyServiceInstance.skipNext();
+    // publish new event to the server
   }
 }

@@ -116,19 +116,11 @@ enum PartyUpdateType {
   DURATION_UPDATE,
 }
 
+final partyUpdateTypeToStringMap = PartyUpdateType.values.asNameMap().map(
+  (key, value) => MapEntry(value, key),
+);
 String partyUpdateTypeToString(PartyUpdateType type) {
-  switch (type) {
-    case PartyUpdateType.SONG_VOTE_UPDATE:
-      return 'song_vote_update';
-    case PartyUpdateType.SONG_QUEUE_ADDITION:
-      return 'song_queue_addition';
-    case PartyUpdateType.CURRENT_SONG_UPDATE:
-      return 'current_song_update';
-    case PartyUpdateType.PLAYBACK_STATUS_UPDATE:
-      return 'playback_status_update';
-    case PartyUpdateType.DURATION_UPDATE:
-      return 'duration_update';
-  }
+  return partyUpdateTypeToStringMap[type] ?? 'unknown';
 }
 
 PartyUpdateType? partyUpdateTypeFromString(String? typeString) {
@@ -610,10 +602,11 @@ class CrowdCueHttpClient extends ChangeNotifier {
     final url = Uri.parse('$_baseURL/realtime/$partyCode/update');
 
     try {
+      final body = jsonEncode(update.toJson());
       final response = await http.post(
         url,
         headers: await _getHeaders(),
-        body: jsonEncode(update.toJson()),
+        body: body,
       );
 
       if (!(response.statusCode >= 200 && response.statusCode < 300)) {
