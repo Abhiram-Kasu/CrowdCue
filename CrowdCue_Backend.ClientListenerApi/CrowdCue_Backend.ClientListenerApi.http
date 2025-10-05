@@ -1,0 +1,6 @@
+@CrowdCue_Backend.ClientListenerApi_HostAddress = http://localhost:5161
+
+GET {{CrowdCue_Backend.ClientListenerApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
