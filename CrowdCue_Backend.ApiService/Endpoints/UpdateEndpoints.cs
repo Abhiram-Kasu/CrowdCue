@@ -24,8 +24,25 @@ internal class UpdateEndpoints
         [FromServices] ILogger<UpdateEndpoints> logger)
     {
         var result = JwtService.ValidateToken(request.Jwt);
+        
         if (result is null) return Results.Unauthorized();
+        
+        var (username, userType) = result.Value;
 
+        var isValid = (userType, request.PartyEvent) switch
+        {
+            // Make this logic extnesible? or tbh it doesn't matter since set of events is finite and won't grow
+            (UserTypes.PartyUser, CreateInitialPartyEvent or CurrentlyPlayingStatePartyUpdate) => false,
+            _ => true
+        };
+        
+        if (!isValid)
+        {
+            logger.LogWarning("User {Username} with type {UserType} attempted to perform invalid action", username,
+                userType);
+            return Results.Forbid();
+        }
+        
         var res = await producer.ProduceAsync(request.PartyCode, JsonSerializer.Serialize(request.PartyEvent));
 
         if (res.success is { Status: Confluent.Kafka.PersistenceStatus.Persisted })
@@ -36,4 +53,5 @@ internal class UpdateEndpoints
         logger.LogError("Failed to produce message: {Error}", res.error);
         return Results.StatusCode(500);
     }
+    
 }

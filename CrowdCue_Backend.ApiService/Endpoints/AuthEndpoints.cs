@@ -29,7 +29,7 @@ public class AuthEndpoints
 
         var (username, partyName) = request;
 
-        var jwt = JwtService.GenerateToken(username);
+        var jwt = JwtService.GenerateToken(username, UserTypes.PartyHost);
         // Create party here
 
         var partyUser = new PartyUser(username);
@@ -55,7 +55,7 @@ public class AuthEndpoints
     {
         var (username, partyCode) = request;
 
-        var jwt = JwtService.GenerateToken(username);
+        var jwt = JwtService.GenerateToken(username, UserTypes.PartyUser);
         // Join party here
         var partyUser = new PartyUser(username);
 
