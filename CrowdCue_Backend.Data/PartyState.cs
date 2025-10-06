@@ -1,15 +1,13 @@
-using System;
 using System.Collections.Frozen;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using System.Dynamic;
-using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Text.Json.Serialization;
-using MongoDB.Bson;
+
 
 namespace CrowdCue_Backend.Data;
 
+[JsonConverter(typeof(PartyCodeJsonConverter))]
 public readonly struct PartyCode 
 {
     [Length(maximumLength:6, minimumLength:6)]
@@ -38,6 +36,24 @@ public readonly struct PartyCode
         }
         result = new PartyCode(s);
         return true;
+    }
+}
+
+public class PartyCodeJsonConverter : JsonConverter<PartyCode>
+{
+    public override PartyCode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        if (reader.TokenType != JsonTokenType.String)
+            throw new JsonException();
+        var str = reader.GetString();
+        if (!PartyCode.TryParse(str, out var code))
+            throw new JsonException($"Invalid PartyCode: {str}");
+        return code;
+    }
+
+    public override void Write(Utf8JsonWriter writer, PartyCode value, JsonSerializerOptions options)
+    {
+        writer.WriteStringValue(value.Code);
     }
 }
 
